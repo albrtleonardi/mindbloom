@@ -12,19 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            // Defining the UserID as the primary key
             $table->id('UserID');
-            // Email field with unique constraint
             $table->string('email')->unique();
-            // Optional email verification timestamp
             $table->timestamp('email_verified_at')->nullable();
-            // Password field
             $table->string('password');
-            // Role field with default value 'User'
             $table->enum('role', ['User', 'Therapist', 'Admin'])->default('User');
-            // Remember token field
             $table->rememberToken();
-            // Timestamps for created_at and updated_at
             $table->timestamps();
         });
     }
